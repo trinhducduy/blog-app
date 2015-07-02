@@ -11,5 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap-base
+ *= require layout
+ *= require static_pages
  *= require_self
  */

@@ -1,0 +1,15 @@
+.navbar.navbar-fixed-top.navbar-inverse
+  .container-fluid
+    .navbar-header
+      %button{type: "button", class: "navbar-toggle collapsed", data: {toggle: "collapse", target: "#blog-app-navbar-collapse"}, aria: {expanded: false}}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to root_path, class: 'navbar-brand' do            
+        Blog App
+    .collapse.navbar-collapse#blog-app-navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Home", root_path
+        %li= link_to "Help", static_pages_help_path
+        %li= link_to "Login", '#'

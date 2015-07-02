@@ -6,20 +6,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .navbar.navbar-fixed-top.navbar-inverse
-      .container-fluid
-        .navbar-header
-          %button{type: "button", class: "navbar-toggle collapsed", data: {toggle: "collapse", target: "#blog-app-navbar-collapse"}, aria: {expanded: false}}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{ href: '#' }
-            Blog App
-        .collapse.navbar-collapse#blog-app-navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li= link_to "Home", root_path
-            %li= link_to "Help", static_pages_help_path
-            %li= link_to "Login", '#'
-    .container
+    = render partial: 'layouts/header'
+    .container#main
       = yield
+    = render partial: 'layouts/footer'
