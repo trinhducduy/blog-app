@@ -11,6 +11,10 @@ body {
   min-height: 100%;  
 }
 
+.btn {
+  border-radius: 0px  
+}
+
 #main {
   padding-top: 60px;
 }
@@ -31,5 +35,20 @@ body {
       padding: 0 10px;
       float: left
     }
+  }
+}
+
+.auth-panel {
+  margin: 0 auto;
+  width: 60%;
+  padding: 20px;
+  border: 1px solid #000;
+  .form-control {
+    border-radius: 0px;
+    border: 1px solid #000;
+  }
+  a {
+    margin-top: 10px;
+    display: block
   }
 }
