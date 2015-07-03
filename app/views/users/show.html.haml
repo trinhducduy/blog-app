@@ -1,0 +1,15 @@
+.row
+  .col-md-12
+    .col-md-3
+      .block
+        %h1= @user.name
+        %p 
+          = @user.email
+        - if !is_current_user?(@user) && user_signed_in?
+          = render 'form_follow' 
+    .col-md-9
+      .block
+        %h2 
+          Recent Posts By 
+          = @user.name
+        = render partial: 'posts/listing', locals: { posts: @posts }

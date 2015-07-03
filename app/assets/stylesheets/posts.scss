@@ -10,15 +10,14 @@
     color: #222;
   }
   .row {
-    background: #eeeeee;
     padding: 10px 
+  }
+  .col-md-12 {
+    background: #eeeeee;
   }
 }
 
 .single-post {
-  border: 1px solid #eeeeee;
-  padding: 10px;
-  background: #fff;
   .btn-edit {
     margin-left: 10px;
   }

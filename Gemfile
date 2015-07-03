@@ -28,6 +28,7 @@ gem "haml-rails", "~> 0.9"
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'faker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

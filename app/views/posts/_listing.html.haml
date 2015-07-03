@@ -1,0 +1,14 @@
+.posts
+  - posts.each do |post|
+    = link_to post do
+      .row
+        .col-md-12
+          .col-md-4
+            = image_tag post.cover_image.thumb.url, class: 'img-responsive'
+          .col-md-8
+            %h3= post.title
+            %i 
+              By
+              = post.user.name
+            %br
+            %p= post.excerpt 
