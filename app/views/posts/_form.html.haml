@@ -1,0 +1,19 @@
+= form_for @post, multipart: true do |f|
+  -if @post.errors.any?
+    %ul.alert.alert-warning
+      - @post.errors.full_messages.each do |msg|
+        %li= msg
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :excerpt
+    = f.text_area :excerpt, class: 'form-control'
+  .form-group
+    = f.label :cover_image
+    = f.file_field :cover_image
+  .form-group
+    = f.label :content
+    = cktext_area :post, :content, :cols => 40    
+  .form-group
+    = f.submit "Save", class: 'btn btn-lg btn-primary'

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :posts
   get 'static_pages/home'
 
   get 'static_pages/help'
 
   root 'static_pages#home'
+
+  mount Ckeditor::Engine => '/ckeditor'
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

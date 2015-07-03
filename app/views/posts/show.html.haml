@@ -1,0 +1,12 @@
+.single-post
+  %h1= @post.title
+  %p 
+    By 
+    = @post.user.name
+    at
+    = @post.created_at.strftime("%B %d")
+    - if @post.posted_by?(current_user)
+      %span
+        = link_to "Edit", edit_post_path(@post), class: 'btn-edit btn btn-primary btn-sm'
+  %hr
+  = @post.content.html_safe

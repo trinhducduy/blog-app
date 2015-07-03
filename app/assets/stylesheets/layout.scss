@@ -1,6 +1,7 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 html {
   height: 100%
@@ -9,6 +10,18 @@ html {
 body {
   position: relative;
   min-height: 100%;  
+  font-family: 'Roboto', san-serif;
+  background: #fafafa;
+  line-height: 1.43em;
+}
+
+.form-control {
+  border-radius: 0px;
+  border: 1px solid #000;
+}
+
+.alert li {
+  list-style-type: none  
 }
 
 .btn {
@@ -16,7 +29,7 @@ body {
 }
 
 #main {
-  padding-top: 60px;
+  padding: 60px 0;
 }
 
 .footer {

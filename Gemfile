@@ -25,6 +25,10 @@ gem 'haml'
 gem "html2haml"
 gem "haml-rails", "~> 0.9"
 
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -48,7 +52,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl'
+  gem 'rspec-collection_matchers'
+  gem 'factory_girl_rails'
   gem 'capybara'
 end
 

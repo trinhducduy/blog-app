@@ -12,6 +12,7 @@
  *
  *= require bootstrap-base
  *= require layout
+ *= require posts
  *= require static_pages
  *= require_self
  */
