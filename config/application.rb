@@ -25,5 +25,9 @@ module BlogApp
     config.generators do |g|
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+    
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w( ckeditor/* )
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end
