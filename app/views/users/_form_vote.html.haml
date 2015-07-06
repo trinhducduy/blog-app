@@ -1,0 +1,12 @@
+- unless current_user.voting?(post)
+  = form_for(current_user.votes.build) do |f|
+    = hidden_field_tag :post_id, post.id 
+    = button_tag(type: "submit", class: "btn btn-primary btn-small" ) do
+      %i.glyphicon.glyphicon-thumbs-up 
+      Vote
+- else
+  = form_for(current_user.votes.find_by(post_id: post.id),
+               html: { method: :delete }) do |f|
+    = button_tag(type: "submit", class: "btn btn-danger btn-small" ) do
+      %i.glyphicon.glyphicon-thumbs-up 
+      Unvote

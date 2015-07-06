@@ -16,4 +16,3 @@
 !/log/.keep
 /tmp
 /public/uploads/*
-/vendor/assets/bower_components/*

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+  resources :votes, only: [:create, :destroy]
   resources :tags, only: [:index]
   resources :users, only: [:show, :edit, :update]
 

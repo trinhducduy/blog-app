@@ -1,5 +1,8 @@
 .single-post.block
   %h1= @post.title
+  .vote-panel  
+    Love this post?
+    = render partial: 'users/form_vote', locals: {post: @post}
   %p 
     By 
     = link_to @post.user.name, user_path(@post.user)
@@ -8,6 +11,8 @@
     - if @post.posted_by?(current_user)
       %span
         = link_to "Edit", edit_post_path(@post), class: 'btn-edit btn btn-primary btn-sm'
+    %p
+      = pluralize(@post.votes.count, "vote")
     %p
     - @post.tags.each do |tag|
       %span.label.label-danger= tag.name

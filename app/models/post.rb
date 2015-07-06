@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   mount_uploader :cover_image, ImageUploader
   belongs_to :user
   has_and_belongs_to_many :tags
+  has_many :votes, dependent: :destroy
+  has_many :voted_by_users, through: :votes, source: :user 
 
   validates :title, presence: true, length:{ minimum: 10 }
   validates :excerpt, presence: true

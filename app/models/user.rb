@@ -9,9 +9,11 @@ class User < ActiveRecord::Base
                                   foreign_key: 'follower_id', 
                                   dependent: :destroy
   
-  has_many :passive_relationships, class_name:  "Relationship",
+  has_many :passive_relationships, class_name: "Relationship",
                                    foreign_key: "followed_id",
-                                   dependent:   :destroy
+                                   dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :voting_posts, through: :votes, source: :post
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followeds, through: :passive_relationships, source: :follower
@@ -25,7 +27,19 @@ class User < ActiveRecord::Base
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  def vote(post)
+    votes.create(post_id: post.id)
+  end
+
+  def unvote(post)
+    votes.find_by(post_id: post.id).destroy
+  end
+
   def following?(other_user)
     following.include?(other_user)
+  end
+  
+  def voting?(post)
+    voting_posts.include?(post)
   end
 end
