@@ -1,12 +1,17 @@
-.row
+.row.user-profile
   .col-md-12
     .col-md-3
       .block
+        .avatar
+          = image_tag @user.avatar.medium.url
         %h1= @user.name
-        %p 
+        %p
+          %i.glyphicon.glyphicon-envelope.profile-icon 
           = @user.email
         - if !is_current_user?(@user) && user_signed_in?
-          = render 'form_follow' 
+          = render 'form_follow'
+        - if is_current_user?(@user)
+          = link_to "Edit profile", edit_user_path(@user), class: 'btn btn-primary'
     .col-md-9
       .block
         %h2 

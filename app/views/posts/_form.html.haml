@@ -7,11 +7,16 @@
     = f.label :title
     = f.text_field :title, class: 'form-control'
   .form-group
+    = f.label :tag_tokens
+    = f.text_field :tag_tokens, "data-pre" => @post.tags.map(&:attributes).to_json, class: 'form-control'
+  .form-group
     = f.label :excerpt
     = f.text_area :excerpt, class: 'form-control'
   .form-group
     = f.label :cover_image
     = f.file_field :cover_image
+    - if @post.cover_image
+      = image_tag @post.cover_image.small.url 
   .form-group
     = f.label :content
     = cktext_area :post, :content, :cols => 40    

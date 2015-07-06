@@ -14,6 +14,9 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem "bower-rails", "~> 0.9.2"
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -29,6 +32,10 @@ gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
+gem 'rails-jquery-autocomplete'
+
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -61,5 +68,6 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'bonsai-elasticsearch-rails'
 end
 

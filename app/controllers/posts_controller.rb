@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  autocomplete :tag, :name
+
   def index
     @posts = Post.all
   end
@@ -12,6 +14,19 @@ class PostsController < ApplicationController
   end
 
   def show
+  end
+
+  def search 
+    if params[:q].nil?
+      @posts = []
+    else
+      @posts = Post.search(params[:q]).records
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
   end
 
   def create
@@ -44,7 +59,8 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :cover_image, :title, :excerpt)
+    params.require(:post).permit(:content, :cover_image, :title, 
+      :excerpt, :tag_tokens)
   end
 
 end

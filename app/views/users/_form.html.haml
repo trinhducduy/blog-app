@@ -1,0 +1,15 @@
+= form_for @user, multipart: true do |f|
+  -if @user.errors.any?
+    %ul.alert.alert-warning
+      - @post.errors.full_messages.each do |msg|
+        %li= msg
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :avatar
+    = f.file_field :avatar
+    - if @user.avatar
+      =image_tag @user.avatar.thumb.url
+  .form-group
+    = f.submit "Save", class: 'btn btn-lg btn-primary'        

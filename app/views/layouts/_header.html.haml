@@ -9,6 +9,9 @@
       = link_to root_path, class: 'navbar-brand' do            
         Blog App
     .collapse.navbar-collapse#blog-app-navbar-collapse
+      = form_tag search_posts_path, class: 'navbar-form navbar-left' do
+        .form-group
+          = text_field_tag :q, nil, placeholder: 'Search for post', class: 'form-control'
       %ul.nav.navbar-nav.navbar-right
         %li= link_to "Home", root_path
         %li= link_to "Help", static_pages_help_path

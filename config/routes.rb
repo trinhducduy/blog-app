@@ -2,9 +2,15 @@ Rails.application.routes.draw do
 
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :posts
+  resources :posts do
+    get :autocomplete_tag_name, :on => :collection
+    post :search, :on => :collection
+  end
+
   resources :relationships, only: [:create, :destroy]
-  get 'users/:id' => 'users#show', as: 'user'
+  resources :tags, only: [:index]
+  resources :users, only: [:show, :edit, :update]
+
   get 'static_pages/home'
 
   get 'static_pages/help'

@@ -1,0 +1,23 @@
+.posts
+  - if @posts.empty?
+    %h1 No posts found
+  - else
+    %h1= pluralize(@posts.count, "posts") + " found"
+    - @posts.each do |post|
+      = link_to post do
+        .row
+          .col-md-12
+            .col-md-4
+              = image_tag post.cover_image.thumb.url, class: 'img-responsive'
+            .col-md-8
+              %h3= post.try(:highlight).try(:title) ? post.highlight.title[0].html_safe : post.title
+              %i 
+                By
+                = post.user.name
+              %br
+              %p 
+                -if post.try(:highlight).try(:excerpt)
+                  - post.highlight.excerpt.each do |snippet|
+                    = snippet.html_safe
+                -else
+                = post.excerpt                  

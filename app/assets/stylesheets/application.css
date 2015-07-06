@@ -13,6 +13,8 @@
  *= require bootstrap-base
  *= require layout
  *= require posts
+ *= require users
+ *= require jquery-tokeninput/styles/token-input-facebook
  *= require static_pages
  *= require_self
  */
