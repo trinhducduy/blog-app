@@ -15,7 +15,7 @@
   .form-group
     = f.label :cover_image
     = f.file_field :cover_image
-    - if @post.cover_image
+    - unless @post.cover_image.blank?
       = image_tag @post.cover_image.small.url 
   .form-group
     = f.label :content
