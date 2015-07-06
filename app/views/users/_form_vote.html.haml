@@ -1,4 +1,5 @@
 - unless current_user.voting?(post)
+  Love this post?
   = form_for(current_user.votes.build) do |f|
     = hidden_field_tag :post_id, post.id 
     = button_tag(type: "submit", class: "btn btn-primary btn-small" ) do

@@ -16,6 +16,10 @@ class Post < ActiveRecord::Base
   validates :cover_image, presence: true
 
   attr_accessor :tag_tokens
+
+  if Rails.env.production?  
+    Post.__elasticsearch__.client = Elasticsearch::Client.new host: 'http://128.199.166.22:9200'
+  end 
   
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do

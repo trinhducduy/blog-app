@@ -1,7 +1,6 @@
 .single-post.block
   %h1= @post.title
   .vote-panel  
-    Love this post?
     = render partial: 'users/form_vote', locals: {post: @post}
   %p 
     By 
