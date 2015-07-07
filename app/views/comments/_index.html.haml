@@ -1,0 +1,12 @@
+- @comments.each do |comment|
+  .media.comment
+    .media-left
+      = link_to comment.user do
+        = image_tag comment.user.avatar.thumb.url, class: 'media-object'
+    .media-body
+      = link_to comment.user do
+        = comment.user.name
+      %span.time
+        = timeago_tag comment.created_at, nojs: true, limit: 10.days.ago   
+      %p= comment.content
+= will_paginate @comments      

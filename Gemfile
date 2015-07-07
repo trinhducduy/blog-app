@@ -37,6 +37,9 @@ gem 'rails-jquery-autocomplete'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+gem 'rails-timeago', '~> 2.0'
+gem 'will_paginate'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

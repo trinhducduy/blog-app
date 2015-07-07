@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   autocomplete :tag, :name
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
   def new
@@ -14,6 +14,9 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    @comment = Comment.new
+    @related_posts = @post.related
   end
 
   def search 
@@ -48,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy(post_params)
+    @post.destroy
     redirect_to posts_url, notice: 'Post was successfully deleted'
   end
 

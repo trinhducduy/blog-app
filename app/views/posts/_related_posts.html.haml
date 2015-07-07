@@ -1,0 +1,8 @@
+.row
+  .col-md-12
+    - @related_posts.each do |post|
+      = link_to post do
+        .col-md-3
+          .block
+            = post.title  
+            = image_tag post.cover_image.thumb.url, class: 'img-responsive'

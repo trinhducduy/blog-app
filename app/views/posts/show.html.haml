@@ -17,3 +17,13 @@
       %span.label.label-danger= tag.name
   %hr
   = @post.content.html_safe
+
+%h2 Related Posts
+= render 'posts/related_posts'
+
+- unless @comments.empty?
+  .post-comments.block
+    = render 'comments/index'
+
+.post-comment-form.block
+  = render 'comments/form'

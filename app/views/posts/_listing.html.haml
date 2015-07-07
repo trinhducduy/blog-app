@@ -15,3 +15,5 @@
               - post.tags.each do |tag|
                 %span.label.label-danger= tag.name
             %p= post.excerpt 
+
+  = will_paginate posts            

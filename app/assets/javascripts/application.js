@@ -17,14 +17,5 @@
 //= require jquery-tokeninput
 //= require bootstrap-sprockets
 //= require ckeditor/init
+//= require rails-timeago
 //= require_tree .
-
-$(function () {
-  $('#post_tag_tokens').tokenInput('/tags.json', { 
-    crossDomain: false,
-    preventDuplicates: true, 
-    theme: 'facebook',
-    prePopulate: $("#post_tag_tokens").data("pre"),
-    allowFreeTagging: true
-  });
-});

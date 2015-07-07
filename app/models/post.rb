@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   mount_uploader :cover_image, ImageUploader
   belongs_to :user
   has_and_belongs_to_many :tags
+  has_many :comments
   has_many :votes, dependent: :destroy
   has_many :voted_by_users, through: :votes, source: :user 
 
@@ -35,6 +36,11 @@ class Post < ActiveRecord::Base
 
   def tag_tokens=(tokens) 
     self.tag_ids = Tag.ids_from_tokens(tokens)
+  end
+
+  def related
+    Post.joins(:posts_tags).where('posts_tags.tag_id IN (?)', 
+      self.tags.map{|tag| tag.id }).limit(4).where.not(id: self.id)
   end
 
   def self.search(query)

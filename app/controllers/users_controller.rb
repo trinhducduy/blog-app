@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   def show
-    @posts = @user.posts
+    @posts = @user.posts.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
   def edit

@@ -17,4 +17,9 @@
         %h2 
           Recent Posts By 
           = @user.name
-        = render partial: 'posts/listing', locals: { posts: @posts }
+        - if @posts.empty?
+          %p 
+            = @user.name
+            haven't post any article yet.
+        - else
+          = render partial: 'posts/listing', locals: { posts: @posts }
