@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :posts do
     get :autocomplete_tag_name, :on => :collection
@@ -10,14 +11,13 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :votes, only: [:create, :destroy]
   resources :tags, only: [:index]
-  resources :users, only: [:show, :edit, :update]
+  resources :users, except: [:index]
 
-  get 'static_pages/home'
-
-  get 'static_pages/help'
+  namespace :admin do 
+    resources :users
+    resources :posts
+  end
 
   root 'static_pages#home'
-
-  mount Ckeditor::Engine => '/ckeditor'
 
 end

@@ -6,6 +6,7 @@
       %i.glyphicon.glyphicon-thumbs-up 
       Vote
 - else
+  You voted!
   = form_for(current_user.votes.find_by(post_id: post.id),
                html: { method: :delete }) do |f|
     = button_tag(type: "submit", class: "btn btn-danger btn-small" ) do

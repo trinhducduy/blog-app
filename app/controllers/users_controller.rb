@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, except: [:index]
+  before_action :authenticate_user!, except: [:show]
+
+  def destroy
+    @user.destroy
+    redirect_to users_path
+  end
+
   def show
     @posts = @user.posts.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
@@ -26,3 +33,4 @@ class UsersController < ApplicationController
   end
 
 end
+

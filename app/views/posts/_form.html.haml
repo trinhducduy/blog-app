@@ -19,6 +19,6 @@
       = image_tag @post.cover_image.small.url 
   .form-group
     = f.label :content
-    = cktext_area :post, :content, cols: 40, ckeditor: { toolbar: :mini }
+    = f.bootsy_area :content, editor_options: { color: false }, rows: 20, class: 'form-control'
   .form-group
     = f.submit "Save", class: 'btn btn-lg btn-primary'

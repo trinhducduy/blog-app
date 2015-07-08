@@ -27,8 +27,5 @@ module BlogApp
     end
     
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
-    config.assets.precompile += Ckeditor.assets
-    config.assets.precompile += %w( ckeditor/* )
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end

@@ -3,6 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+$green-dark: #16A085 !important;
+$green: #1ABC9C !important;
+$yellow: #F1C40F !important;
+$yellow-dark: #D8B00D !important;
+$gray-extra-dark: #666 !important;
+$gray-dark: #7F8C8D !important;
+$gray: #BDC3C7 !important;
+$sea-dark: #2C3E50 !important;
+$blue: #3498DB !important;
+$blue-dark: #2980B9 !important;
+$red: #E74C3C !important;
+$red-dark: #C0392B !important;
+
 html {
   height: 100%
 }
@@ -11,13 +24,25 @@ body {
   position: relative;
   min-height: 100%;  
   font-family: 'Roboto', san-serif;
-  background: #fafafa;
-  line-height: 1.43em;
+  color: $gray-extra-dark;
+  font-size: 16px;
+  line-height: 1.4em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+  line-height: 1.4em;
+}
+
+a {
+  &:hover, &:focus {
+    text-decoration: none;
+  }
 }
 
 .form-control {
-  border-radius: 0px;
-  border: 1px solid #000;
+  border-radius: 5px;
+  border: 3px solid #eee;
 }
 
 .alert li {
@@ -25,7 +50,27 @@ body {
 }
 
 .btn {
-  border-radius: 0px  
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  &:hover, &:focus {
+    color: #fff
+  }
+}
+
+.btn-primary {
+  background: $blue;
+  border-bottom: 4px solid $blue-dark
+}
+
+.btn-danger {
+  background: $red;
+  border-bottom: 4px solid $red-dark
+}
+  
+.btn-highlight {
+  background: $yellow;
+  border-bottom: 4px solid $yellow-dark 
 }
 
 .block {
@@ -44,7 +89,7 @@ body {
 }
 
 .footer {
-  border-top: 1px solid #fafafa;
+  background: #eee;
   position: absolute;
   bottom: 0;
   padding: 10px;
@@ -74,5 +119,33 @@ body {
   a {
     margin-top: 10px;
     display: block
+  }
+}
+
+// Navbar
+.navbar-pk {
+  background: $green;
+  a {
+    color: #fff;
+    font-weight: bold;
+    &:hover, &:focus {
+      background: $green;
+    }
+  }
+  .btn {
+    color: #fff;
+    font-weight: bold;
+    margin-top: -5px;
+    display: block;
+    padding: 3px 15px;
+  }
+  .form-control {
+    width: 400px;
+  }
+  .navbar-toggle {
+    background: #fff;
+    .icon-bar {
+      background: $gray
+    }
   }
 }

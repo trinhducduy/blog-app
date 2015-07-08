@@ -1,0 +1,10 @@
+%h1 Options
+.list-group
+  %li.list-group-item
+    %span.badge
+      = User.count
+    = link_to "Manage Users", admin_users_path
+  %li.list-group-item
+    %span.badge
+      = Post.count
+    = link_to "Manage Posts", admin_posts_path

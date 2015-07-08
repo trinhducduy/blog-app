@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
-
+  authorize_resource
+  before_action :authenticate_user!
+  
   def index
     @tags = Tag.tokens(params[:q])
 

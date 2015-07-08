@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+    User.create(name: 'Administrator',
+          email: 'admin@framgia.com',
+          password: '12345678',
+          password_confirmation: '12345678',
+          admin: true)
+
+    User.create(name: 'Faker',
+          email: 'faker@framgia.com',
+          password: '12345678',
+          password_confirmation: '12345678',
+          admin: false)

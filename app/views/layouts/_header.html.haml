@@ -1,4 +1,4 @@
-.navbar.navbar-fixed-top.navbar-inverse
+.navbar.navbar-fixed-top.navbar-pk
   .container-fluid
     .navbar-header
       %button{type: "button", class: "navbar-toggle collapsed", data: {toggle: "collapse", target: "#blog-app-navbar-collapse"}, aria: {expanded: false}}
@@ -13,12 +13,19 @@
         .form-group
           = text_field_tag :q, nil, placeholder: 'Search for post', class: 'form-control'
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to "Home", root_path
-        %li= link_to "Help", static_pages_help_path
         -unless user_signed_in?
           %li= link_to "Login", new_user_session_path
         -else
-          %li= link_to "New Post", new_post_path
+          %li
+            = link_to new_post_path do
+              .btn.btn-highlight Write New Topic 
+          %li
+            = link_to "#" do
+              .btn.btn-danger Ask A Question
+          - if current_user.admin?
+            %li
+              = link_to admin_users_path do
+                .btn.btn-primary Manage
           %li.dropdown
             %a{href: "#", class: "dropdown-toggle", data: {toggle:"dropdown"}, role: "button", aria: {haspopup:"true", expanded:"false"}} 
               %i.glyphicon.glyphicon-cog

@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
+  authorize_resource
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show, :search]
+
   autocomplete :tag, :name
 
   def index
@@ -63,7 +66,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, :cover_image, :title, 
-      :excerpt, :tag_tokens)
+      :excerpt, :tag_tokens, :bootsy_image_gallery_id)
   end
 
 end

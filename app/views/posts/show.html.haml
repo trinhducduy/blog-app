@@ -1,29 +1,33 @@
-.single-post.block
-  %h1= @post.title
-  .vote-panel  
-    = render partial: 'users/form_vote', locals: {post: @post}
-  %p 
-    By 
-    = link_to @post.user.name, user_path(@post.user)
-    at
-    = @post.created_at.strftime("%B %d")
-    - if @post.posted_by?(current_user)
-      %span
-        = link_to "Edit", edit_post_path(@post), class: 'btn-edit btn btn-primary btn-sm'
-    %p
-      = pluralize(@post.votes.count, "vote")
-    %p
-    - @post.tags.each do |tag|
-      %span.label.label-danger= tag.name
-  %hr
-  = @post.content.html_safe
+.single-post
+  .block
+    %h1= @post.title
+    - if user_signed_in?
+      .vote-panel  
+        = render partial: 'users/form_vote', locals: {post: @post}
+    %p 
+      By 
+      = link_to @post.user.name, user_path(@post.user)
+      at
+      = @post.created_at.strftime("%B %d")
+      - if @post.posted_by?(current_user)
+        %span
+          = link_to "Edit", edit_post_path(@post), class: 'btn-edit btn btn-primary btn-sm'
+      %p
+        = pluralize(@post.votes.count, "vote")
+      %p
+      - @post.tags.each do |tag|
+        %span.label.label-danger= tag.name
+    %hr
+    = @post.content.html_safe
 
-%h2 Related Posts
-= render 'posts/related_posts'
+  - unless @post.related.empty?
+    .related-posts
+      %h2 Related Posts
+      = render 'posts/related_posts'
 
-- unless @comments.empty?
-  .post-comments.block
-    = render 'comments/index'
+  - unless @comments.empty?
+    .post-comments.block
+      = render 'comments/index'
 
-.post-comment-form.block
-  = render 'comments/form'
+  .post-comment-form.block
+    = render 'comments/form'

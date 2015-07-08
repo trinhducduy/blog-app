@@ -3,6 +3,7 @@ require 'elasticsearch/model'
 class Post < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  include Bootsy::Container
 
   mount_uploader :cover_image, ImageUploader
   belongs_to :user

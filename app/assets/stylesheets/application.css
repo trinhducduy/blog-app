@@ -18,4 +18,5 @@
  *= require jquery-tokeninput/styles/token-input-facebook
  *= require static_pages
  *= require_self
+ *= require bootsy
  */

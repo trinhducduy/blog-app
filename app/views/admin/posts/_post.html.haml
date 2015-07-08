@@ -1,0 +1,6 @@
+%tr
+  %td= link_to post.title, post
+  %td= post.user.name
+  %td= post.votes.count
+  %td= link_to "Edit", edit_post_path(post), class: 'btn btn-highlight'
+  %td= link_to "Delete", post, method: :delete, data: { confirm: "Are your sure?" }, class: 'btn btn-danger'

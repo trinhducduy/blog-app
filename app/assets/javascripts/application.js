@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootsy
 //= require jquery-ui
 //= require autocomplete-rails
 //= require jquery-tokeninput
 //= require bootstrap-sprockets
-//= require ckeditor/init
 //= require rails-timeago
 //= require_tree .
