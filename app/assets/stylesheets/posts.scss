@@ -30,6 +30,13 @@
   }
 }
 
+.popular-tags {
+  span {
+    display: inline-block;
+    margin: 0 2px;
+  }
+}
+
 .single-post {
   .btn-edit {
     margin-left: 10px;

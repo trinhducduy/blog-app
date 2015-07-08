@@ -24,3 +24,7 @@
         = render partial: 'posts/listing', locals: { posts: @posts }
       .col-md-3
         %p.head Popular tags
+        %p.popular-tags
+          - Tag.popular.each do |tag|
+            %span.label.label-danger
+              = tag.name
