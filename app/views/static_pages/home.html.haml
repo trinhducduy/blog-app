@@ -10,5 +10,17 @@
       sample application.
     = link_to "Sign up now!", new_user_registration_path, class: 'btn btn-lg btn-primary'
 - else
-  %h1 Latest Posts
-  = render partial: 'posts/listing', locals: { posts: @posts }
+  .row.home
+    .col-md-12
+      .col-md-2
+        %p.head Menu
+        %ul
+          %li Top Topics
+          %li Top Questions
+          %li Video
+          %li Game
+      .col-md-7
+        %p.head Top topics on KidPlays
+        = render partial: 'posts/listing', locals: { posts: @posts }
+      .col-md-3
+        %p.head Popular tags

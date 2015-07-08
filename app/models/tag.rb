@@ -15,4 +15,7 @@ class Tag < ActiveRecord::Base
     tokens.split(',')
   end
 
+  def popular 
+  end
+
 end

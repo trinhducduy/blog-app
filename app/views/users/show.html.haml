@@ -13,13 +13,12 @@
         - if is_current_user?(@user)
           = link_to "Edit profile", edit_user_path(@user), class: 'btn btn-primary'
     .col-md-9
-      .block
-        %h2 
-          Recent Posts By 
+      %h2 
+        Recent Posts By 
+        = @user.name
+      - if @posts.empty?
+        %p 
           = @user.name
-        - if @posts.empty?
-          %p 
-            = @user.name
-            haven't post any article yet.
-        - else
-          = render partial: 'posts/listing', locals: { posts: @posts }
+          haven't post any article yet.
+      - else
+        = render partial: 'posts/listing', locals: { posts: @posts }

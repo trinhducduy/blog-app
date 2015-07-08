@@ -9,11 +9,24 @@
   a {
     color: #222;
   }
-  .row {
-    padding: 10px 
+  .block {
+    padding: 0 10px;
   }
-  .col-md-12 {
-    background: #eeeeee;
+  .post-image {
+    position: relative;
+    background: #111;
+    height: 200px;
+    overflow: hidden;
+    margin: 0 -10px;
+    img {
+      height: auto;
+      position: absolute;
+      transition: all 1s cubic-bezier(0.64, 0, 0.68, 0.81) 0s;
+      width: 100%;
+      &:hover {
+        transform: translateY(-100px);
+      }
+    }
   }
 }
 

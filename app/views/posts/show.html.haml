@@ -19,6 +19,7 @@
         %span.label.label-danger= tag.name
     %hr
     = @post.content.html_safe
+    .clearfix
 
   - unless @post.related.empty?
     .related-posts

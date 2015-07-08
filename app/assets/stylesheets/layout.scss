@@ -40,6 +40,11 @@ a {
   }
 }
 
+p.head {
+  font-size: 14px;
+  color: $gray
+}
+
 .form-control {
   border-radius: 5px;
   border: 3px solid #eee;
@@ -66,6 +71,13 @@ a {
 .btn-danger {
   background: $red;
   border-bottom: 4px solid $red-dark
+}
+
+.btn-default {
+  background: #aaa;
+  &:hover {
+    background: #ccc
+  }
 }
   
 .btn-highlight {
