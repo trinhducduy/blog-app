@@ -22,11 +22,12 @@ class PostsController < ApplicationController
     @related_posts = @post.related
   end
 
-  def search 
-    if params[:q].nil?
+  def search
+    @query = params[:q] 
+    if @query.nil?
       @posts = []
     else
-      @posts = Post.search(params[:q]).records
+      @posts = Post.search(@query).records.paginate(page: params[:page], per_page: 10)
     end
 
     respond_to do |format|

@@ -29,31 +29,42 @@ body {
   line-height: 1.4em;
 }
 
+// Typo
 h1, h2, h3, h4, h5, h6 {
   color: #000;
   line-height: 1.4em;
 }
-
 a {
   &:hover, &:focus {
     text-decoration: none;
   }
 }
-
+.head {
+  color: $gray;
+}
 p.head {
   font-size: 14px;
-  color: $gray
+}
+h1.head {
+  font-size: 18px;
+  span {
+    color: #222;
+  }
+}
+em.highlight {
+  background: #f0f0f0;
 }
 
+//Form
 .form-control {
   border-radius: 5px;
   border: 3px solid #eee;
 }
 
+//Alert, button
 .alert li {
   list-style-type: none  
 }
-
 .btn {
   border-radius: 4px;
   border: none;
@@ -62,44 +73,39 @@ p.head {
     color: #fff
   }
 }
-
 .btn-primary {
   background: $blue;
   border-bottom: 4px solid $blue-dark
 }
-
 .btn-danger {
   background: $red;
   border-bottom: 4px solid $red-dark
 }
-
 .btn-default {
   background: #aaa;
   &:hover {
     background: #ccc
   }
 }
-  
 .btn-highlight {
   background: $yellow;
   border-bottom: 4px solid $yellow-dark 
 }
 
+//Layout
 .block {
   border: 1px solid #eeeeee;
   padding: 10px;
   margin-bottom: 5px;
   background: #fff;
+  overflow: hidden;
 }
-
 .clearfix {
   clear: both;
 }
-
 #main {
   padding: 60px 0;
 }
-
 .footer {
   background: #eee;
   position: absolute;
@@ -118,7 +124,6 @@ p.head {
     }
   }
 }
-
 .auth-panel {
   margin: 0 auto;
   width: 60%;

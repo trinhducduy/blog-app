@@ -13,19 +13,9 @@
   .row.home
     .col-md-12
       .col-md-2
-        %p.head Menu
-        %ul
-          %li Feed
-          %li Top Topics
-          %li Top Questions
-          %li Video
-          %li Game
+        = render 'layouts/menu'
       .col-md-7
         %p.head Top topics on KidPlays
         = render partial: 'posts/listing', locals: { posts: @posts }
       .col-md-3
-        %p.head Popular tags
-        %p.popular-tags
-          - Tag.popular.each do |tag|
-            %span.label.label-danger
-              = tag.name
+        = render 'tags/popular'

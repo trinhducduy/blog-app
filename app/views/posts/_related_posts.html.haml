@@ -1,8 +1,5 @@
-.row
-  .col-md-12
-    - @related_posts.each do |post|
-      = link_to post do
-        .col-md-3
-          .block
-            %h4= post.title  
-            = image_tag post.cover_image.thumb.url, class: 'img-responsive'
+- @related_posts.each do |post|
+  = link_to post do
+    .block
+      %h4= post.title  
+      = image_tag post.cover_image.thumb.url, class: 'img-responsive'

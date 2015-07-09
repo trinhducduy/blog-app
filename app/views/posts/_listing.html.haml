@@ -7,7 +7,7 @@
             .post-image
               = image_tag post.cover_image.thumb.url, class: 'img-responsive'
             .post-content
-              %h3= post.title
+              %h3= post.try(:highlight).try(:title) ? post.highlight.title[0].html_safe : post.title
               %i 
                 By
                 = post.user.name
@@ -15,6 +15,11 @@
               %p 
                 - post.tags.each do |tag|
                   %span.label.label-danger= tag.name
-              %p= post.excerpt 
+              %p 
+                -if post.try(:highlight).try(:excerpt)
+                  - post.highlight.excerpt.each do |snippet|
+                    = snippet.html_safe
+                -else
+                = post.excerpt      
 
   = will_paginate posts            
