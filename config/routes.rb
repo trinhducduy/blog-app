@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', 
+    omniauth_callbacks: "users/omniauth_callbacks" }
+
   resources :posts do
     get :autocomplete_tag_name, :on => :collection
     post :search, :on => :collection

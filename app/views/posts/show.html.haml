@@ -14,7 +14,7 @@
             = link_to @post.user.name, user_path(@post.user)
             at
             = @post.created_at.strftime("%B %d")
-            - if @post.posted_by?(current_user)
+            - if @post.posted_by?(current_user) || current_user.admin?
               %span
                 = link_to "Edit", edit_post_path(@post), class: 'btn-edit btn btn-primary btn-sm'
             %p
