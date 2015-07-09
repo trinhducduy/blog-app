@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :avatar, AvatarUploader
 
@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followeds, through: :passive_relationships, source: :follower
   has_many :posts
+
+  validates :name, presence: true, length: { minimum: 2 }
 
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
