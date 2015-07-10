@@ -4,3 +4,4 @@
 # asset 'bootstrap'
 
 asset 'jquery-tokeninput', git: 'git@github.com:loopj/jquery-tokeninput.git'
+asset 'font-awesome'

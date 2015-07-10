@@ -11,14 +11,14 @@
     .collapse.navbar-collapse#blog-app-navbar-collapse
       = form_tag search_posts_path, class: 'navbar-form navbar-left' do
         .form-group
-          = text_field_tag :q, nil, placeholder: 'Search for post', class: 'form-control'
+          = text_field_tag :q, nil, placeholder: 'Search for article', class: 'form-control'
       %ul.nav.navbar-nav.navbar-right
         -unless user_signed_in?
           %li= link_to "Login", new_user_session_path
         -else
           %li
             = link_to new_post_path do
-              .btn.btn-highlight Write New Topic 
+              .btn.btn-highlight Write New Article 
           %li
             = link_to "#" do
               .btn.btn-danger Ask A Question
@@ -28,7 +28,7 @@
                 .btn.btn-primary Manage
           %li.dropdown
             %a{href: "#", class: "dropdown-toggle", data: {toggle:"dropdown"}, role: "button", aria: {haspopup:"true", expanded:"false"}} 
-              %i.glyphicon.glyphicon-cog
+              = image_tag current_user.avatar.thumb.url, size: '30x30', class: 'user-icon'
             %ul.dropdown-menu
               %li
                 =link_to user_path(current_user) do

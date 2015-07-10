@@ -1,0 +1,11 @@
+.auth-panel
+  %h3 Please update your email !
+  = form_for @user do |f|
+    -if @user.errors.any?
+      %ul.alert.alert-warning
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+    .form-group
+      = f.text_field :email, class: 'form-control', value: ''
+    .form-group
+      = f.submit 'Update', class: 'btn btn-lg btn-primary'            

@@ -1,6 +1,7 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "jquery-tokeninput": "git@github.com:loopj/jquery-tokeninput.git"
+    "jquery-tokeninput": "git@github.com:loopj/jquery-tokeninput.git",
+    "font-awesome": "latest"
   }
 }

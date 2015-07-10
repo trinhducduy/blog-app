@@ -1,24 +1,25 @@
-= form_for @post, multipart: true do |f|
-  -if @post.errors.any?
-    %ul.alert.alert-warning
-      - @post.errors.full_messages.each do |msg|
-        %li= msg
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
-  .form-group
-    = f.label :tag_tokens
-    = f.text_field :tag_tokens, "data-pre" => @post.tags.map(&:attributes).to_json, class: 'form-control'
-  .form-group
-    = f.label :excerpt
-    = f.text_area :excerpt, class: 'form-control'
-  .form-group
-    = f.label :cover_image
-    = f.file_field :cover_image
-    - unless @post.cover_image.blank?
-      = image_tag @post.cover_image.small.url 
-  .form-group
-    = f.label :content
-    = f.bootsy_area :content, editor_options: { color: false }, rows: 20, class: 'form-control'
-  .form-group
-    = f.submit "Save", class: 'btn btn-lg btn-primary'
+.form-block
+  = form_for @post, multipart: true do |f|
+    -if @post.errors.any?
+      %ul.alert.alert-warning
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    .form-group
+      = f.label :tag_tokens
+      = f.text_field :tag_tokens, "data-pre" => @post.tags.map(&:attributes).to_json, class: 'form-control'
+    .form-group
+      = f.label :excerpt
+      = f.text_area :excerpt, class: 'form-control'
+    .form-group
+      = f.label :cover_image
+      = f.file_field :cover_image
+      - unless @post.cover_image.blank?
+        = image_tag @post.cover_image.small.url 
+    .form-group
+      = f.label :content
+      = f.bootsy_area :content, editor_options: { color: false }, rows: 20, class: 'form-control'
+    .form-group
+      = f.submit "Save", class: 'btn btn-lg btn-primary'

@@ -22,14 +22,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def finish_signup
+    if @user && !@user.email_verified?
+      if request.patch? && params[:user] 
+        if @user.update(user_params)
+          sign_in(@user, bypass: true)
+          redirect_to root_path, notice: 'Successfully authenticated from Twitter.'
+        else
+          render :finish_signup
+        end
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
   private 
   
   def set_user
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end 
 
   def user_params
-    params.require(:user).permit(:name, :avatar)
+    params.require(:user).permit(:name, :email, :avatar)
   end
 
 end

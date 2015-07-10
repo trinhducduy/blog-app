@@ -10,6 +10,7 @@ $yellow-dark: #D8B00D !important;
 $gray-extra-dark: #666 !important;
 $gray-dark: #7F8C8D !important;
 $gray: #BDC3C7 !important;
+$gray-light: #FAFAFA !important;
 $sea-dark: #2C3E50 !important;
 $blue: #3498DB !important;
 $blue-dark: #2980B9 !important;
@@ -51,6 +52,10 @@ h1.head {
     color: #222;
   }
 }
+h1.form-head {
+  color: $gray-dark;
+  font-size: 26px;
+}
 em.highlight {
   background: #f0f0f0;
 }
@@ -76,6 +81,21 @@ em.highlight {
 .btn-primary {
   background: $blue;
   border-bottom: 4px solid $blue-dark
+}
+.btn-social {
+  .icon {
+    margin-right: 5px;
+  }
+}
+.btn-facebook {
+  background: #3b5998;
+  border-bottom: 4px solid #2f4779;
+  font-weight: bold;
+}
+.btn-twitter {
+  background: #55acee;
+  border-bottom: 4px solid #4489be;
+  font-weight: bold;
 }
 .btn-danger {
   background: $red;
@@ -104,7 +124,7 @@ em.highlight {
   clear: both;
 }
 #main {
-  padding: 60px 0;
+  padding: 70px 0;
 }
 .footer {
   background: #eee;
@@ -126,12 +146,18 @@ em.highlight {
 }
 .auth-panel {
   margin: 0 auto;
-  width: 60%;
-  padding: 20px;
-  background: #eeeeee;
-  .form-control {
-    border-radius: 0px;
-    border: 1px solid #000;
+  width: 90%;
+  padding: 20px 20px 30px;
+  background: $gray-light;
+  border: 1px solid #eee;
+  .btn-social {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+  }
+  .btn.signin {
+    font-size: 22px;
   }
   a {
     margin-top: 10px;
@@ -139,13 +165,33 @@ em.highlight {
   }
 }
 
+.form-block {
+  border: 1px solid #eee;
+  padding: 20px;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .auth-panel {
+    width: 80%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .auth-panel {
+    width: 40%;
+  }
+}
+
+
 // Navbar
 .navbar-pk {
   background: $green;
   a {
     color: #fff;
     font-weight: bold;
-    &:hover, &:focus {
+    &:hover, &:focus, &:visited {
       background: $green;
     }
   }
@@ -156,8 +202,23 @@ em.highlight {
     display: block;
     padding: 3px 15px;
   }
+  .dropdown-menu {
+    background: $green;
+    a {
+      &:hover, &:focus {
+        color: #eee;  
+      }
+      color: #fff;
+      font-weight: bold;
+    }
+  }
   .form-control {
     width: 400px;
+  }
+  .user-icon {
+    border: 2px solid #eee;
+    border-radius: 4px;
+    margin-top: -5px;
   }
   .navbar-toggle {
     background: #fff;

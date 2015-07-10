@@ -1,7 +1,7 @@
 = form_for @user, multipart: true do |f|
   -if @user.errors.any?
     %ul.alert.alert-warning
-      - @post.errors.full_messages.each do |msg|
+      - @user.errors.full_messages.each do |msg|
         %li= msg
   .form-group
     = f.label :name

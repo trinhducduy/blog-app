@@ -10,4 +10,14 @@
   = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
 - if devise_mapping.omniauthable?
   - resource_class.omniauth_providers.each do |provider|
-    = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+    - button_name = "Sign in with #{provider.to_s.titleize}"
+    = link_to omniauth_authorize_path(resource_name, provider) do
+      -if provider.to_s == 'facebook'
+        .btn.btn-social.btn-facebook
+          %i.fa.fa-facebook.icon
+          = button_name 
+      -elsif provider.to_s == 'twitter'
+        .btn.btn-social.btn-twitter
+          %i.fa.fa-twitter.icon
+          = button_name 
+      

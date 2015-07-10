@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -18,7 +21,7 @@ class User < ActiveRecord::Base
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followeds, through: :passive_relationships, source: :follower
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2 }
 
@@ -46,7 +49,10 @@ class User < ActiveRecord::Base
     voting_posts.include?(post)
   end
 
-  def self.from_facebook_omniauth(auth)
+  def self.from_omniauth(auth)
+    auth.info.email ||= 'let@change.me'
+    puts auth.info.email    
+    
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
@@ -55,12 +61,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.from_twitter_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = "duytd@gmail.com"
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name
-      user.avatar = auth.info.image
-    end
+  def email_verified?
+    self.email && self.email != 'let@change.me'
   end
 end
