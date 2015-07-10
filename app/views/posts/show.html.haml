@@ -25,11 +25,13 @@
           %hr
           = @post.content.html_safe
           .clearfix
-
+        
+        %h1.head Comments
+        
         - unless @comments.empty?
-          .post-comments.block
+          .block
             = render 'comments/index'
-
+        
         .post-comment-form.block
           = render 'comments/form'    
     .col-md-3

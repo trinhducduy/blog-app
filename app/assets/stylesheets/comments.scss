@@ -1,9 +1,48 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.post-comments {
+.comments {
   .time {
     margin-left: 10px;
     color: #888
+  }
+  .col-md-1 {
+    padding: 0;
+  }
+  .form-reply {
+    margin-left: 60px;
+  }
+}
+
+.comment {
+  display: block;
+  .fa-close {
+    color: #eee;
+  }
+  p {
+    font-size: 14px;
+  }
+  .children {
+    .media-object {
+      width: 40px;
+      height: 40px;
+    }
+    .media-body {
+      a {
+        font-size: 14px;
+      }
+      p {
+        font-size: 13px; 
+      }
+    }
+  }
+  .reply-btn {
+    font-size: 14px;
+    font-weight: bold;
+    color: #3498DB;
+    margin-left: 10px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

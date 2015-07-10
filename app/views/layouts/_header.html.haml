@@ -17,8 +17,8 @@
           %li= link_to "Login", new_user_session_path
         -else
           %li
-            = link_to new_post_path do
-              .btn.btn-highlight Write New Article 
+            = link_to "#" do
+              .btn.btn-highlight{ data: { toggle:"modal", target: "#make_a_share" } } Give your 2 cents
           %li
             = link_to "#" do
               .btn.btn-danger Ask A Question

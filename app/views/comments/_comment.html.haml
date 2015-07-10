@@ -1,0 +1,22 @@
+.media.comment
+  .media-left
+    = link_to comment.user do
+      = image_tag comment.user.avatar.thumb.url, class: 'media-object'
+  .media-body
+    -if comment.created_by? current_user
+      = link_to comment_path(comment.id), method: :delete, data: {confirm: 'Are you sure?'} do
+        %i.fa.fa-close.pull-right
+    = link_to comment.user do
+      = comment.user.name
+    %span.time
+      = timeago_tag comment.created_at, nojs: true, limit: 10.days.ago   
+    %span.reply-btn{ data: {id: "#{comment.id}"} }
+      - unless comment.post.nil?
+        Reply
+        = "("+comment.children.count.to_s+")" if comment.children.count > 0
+
+        %i.fa.fa-caret-down
+    %p= comment.content
+    .children.hide{ id: "children_#{comment.id}" }
+      - comment.children.each do |child|
+        = render partial: 'comments/comment', locals: { comment: child }      

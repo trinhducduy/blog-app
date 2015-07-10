@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comments = @post.comments.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    @comments = @post.comments.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     @comment = Comment.new
     @related_posts = @post.related
   end

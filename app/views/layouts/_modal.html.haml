@@ -1,0 +1,24 @@
+#make_a_share.modal.fade{ role: "dialog" }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{ type:"button", class: "close", data: { dismiss: "modal"} } &times;
+        %h4.modal-title.head Give your 2 cents
+      .modal-body  
+        .row
+          .col-md-12
+            .col-md-4
+              = link_to new_post_path do
+                .share-article
+                  %i.fa.fa-5x.fa-newspaper-o
+                  %p Write An Article
+            .col-md-4
+              .share-link
+                %i.fa.fa-5x.fa-link
+                %p Post A Link
+            .col-md-4
+              .share-video
+                %i.fa.fa-5x.fa-caret-square-o-right
+                %p Share A Video
+      .modal-footer
+        %button{ type:"button", class: "btn btn-primary", data: { dismiss: "modal"} } Close

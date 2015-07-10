@@ -10,6 +10,7 @@ class Ability
       can :manage, :static_page
       can [:read, :create], :all
       can :search, Post
+      can :reply, Comment
       
       # owner users
       can [:edit, :update, :destroy], Post, :user_id => user.id
