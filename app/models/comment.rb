@@ -10,4 +10,8 @@ class Comment < ActiveRecord::Base
   def created_by? user
     self.user == user
   end
+
+  def has_comment_of? user
+    self.children.where(user_id: user.id).count > 0
+  end
 end

@@ -59,6 +59,10 @@ h1.form-head {
 em.highlight {
   background: #f0f0f0;
 }
+textarea {
+  resize: none;
+  overflow: hidden
+}
 
 //Form
 .form-control {
@@ -294,4 +298,8 @@ em.highlight {
       padding: 0.1em 0.25em; 
     }
   }  
+}
+
+.top5 {
+  margin-top: 5px;
 }

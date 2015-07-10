@@ -1,13 +1,20 @@
 .comments
   - @comments.each do |comment|
     = render partial: 'comments/comment', locals: { comment: comment }
-    .form-reply.hide{ id: "form_reply_#{comment.id}" }
-      .media-left
-        = link_to current_user do
-          = image_tag current_user.avatar.thumb.url, class: 'media-object', size: '40x40'
-      .media-body
-        = form_for :comment, url: comment_reply_path(comment) do |f|
-          = f.text_field :content, class: 'form-control input-sm', autocomplete: 'off'
+    -if user_signed_in?
+      .form-reply.hide{ id: "form_reply_#{comment.id}" }
+        .media-left
+          = link_to current_user do
+            = image_tag current_user.avatar.thumb.url, class: 'media-object', size: '40x40'
+        .media-body
+          = form_for :comment, url: comment_reply_path(comment) do |f|
+            = f.text_area :content, class: 'form-control input-sm', autocomplete: 'off', rows: 1
+            = f.submit "Send", class: 'btn btn-sm btn-primary pull-right top5'
+    - else
+      %h1.head 
+        Please 
+        = link_to "log in", new_user_session_path
+        to comment
 
   = will_paginate @comments      
 

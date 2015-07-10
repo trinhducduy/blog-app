@@ -3,7 +3,7 @@
     = link_to comment.user do
       = image_tag comment.user.avatar.thumb.url, class: 'media-object'
   .media-body
-    -if comment.created_by? current_user
+    -if user_signed_in? && comment.created_by?(current_user)
       = link_to comment_path(comment.id), method: :delete, data: {confirm: 'Are you sure?'} do
         %i.fa.fa-close.pull-right
     = link_to comment.user do
@@ -13,9 +13,11 @@
     %span.reply-btn{ data: {id: "#{comment.id}"} }
       - unless comment.post.nil?
         Reply
-        = "("+comment.children.count.to_s+")" if comment.children.count > 0
+        = "("+comment.children.count.to_s+")" if comment.children.count > 0       
+        %i.fa.fa-caret-down.reply-icon
 
-        %i.fa.fa-caret-down
+        - if user_signed_in? && comment.has_comment_of?(current_user)
+          %i.fa.fa-flag.red{ title: "You replied to this comment" }
     %p= comment.content
     .children.hide{ id: "children_#{comment.id}" }
       - comment.children.each do |child|

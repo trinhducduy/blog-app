@@ -16,6 +16,9 @@
 //= require jquery-ui
 //= require autocomplete-rails
 //= require jquery-tokeninput
+//= require autogrow/autogrow
 //= require bootstrap-sprockets
 //= require rails-timeago
 //= require_tree .
+
+$('textarea').autogrow();

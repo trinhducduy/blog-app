@@ -7,4 +7,4 @@ $ ->
     id = $(this).data('id')
     $('#form_reply_'+id).toggleClass('hide')
     $('#children_'+id).toggleClass('hide')
-    $(this).find('.fa').toggleClass('fa-caret-down fa-caret-up')
+    $(this).find('.reply-icon').toggleClass("fa-caret-down fa-caret-up")

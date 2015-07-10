@@ -1,5 +1,5 @@
 = form_for [@post, @comment] do |f|
   .form-group
-    = f.text_field :content, class: 'form-control', autocomplete: 'off'
+    = f.text_area :content, rows: 1, resize: false, class: 'form-control', autocomplete: 'off'
   = f.submit "Send", class: 'btn btn-lg btn-primary pull-right'
   .clearfix

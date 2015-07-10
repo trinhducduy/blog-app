@@ -5,3 +5,4 @@
 
 asset 'jquery-tokeninput', git: 'git@github.com:loopj/jquery-tokeninput.git'
 asset 'font-awesome'
+asset 'autogrow', git: 'https://github.com/ultimatedelman/autogrow.git'

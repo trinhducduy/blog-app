@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710031228) do
+ActiveRecord::Schema.define(version: 20150710083136) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150710031228) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "content"
+    t.text     "content"
     t.integer  "parent_id"
     t.integer  "user_id"
     t.integer  "post_id"
