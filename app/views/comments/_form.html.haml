@@ -1,5 +1,12 @@
-= form_for [@post, @comment] do |f|
-  .form-group
-    = f.text_area :content, rows: 1, resize: false, class: 'form-control', autocomplete: 'off'
-  = f.submit "Send", class: 'btn btn-lg btn-primary pull-right'
-  .clearfix
+-if user_signed_in?
+  = form_for [@post, @comment] do |f|
+    .form-group
+      = f.text_area :content, rows: 1, resize: false, class: 'form-control', autocomplete: 'off'
+    = f.submit "Send", class: 'btn btn-lg btn-primary pull-right'
+    .clearfix
+
+- else
+%h1.head 
+  Please 
+  = link_to "log in", new_user_session_path
+  to comment

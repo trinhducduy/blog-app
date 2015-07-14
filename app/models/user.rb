@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, 
-         omniauth_providers: [:facebook, :twitter]
+         omniauth_providers: [:facebook, :twitter, :google_oauth2]
   mount_uploader :avatar, AvatarUploader
 
   has_many :active_relationships, class_name: 'Relationship', 
@@ -51,8 +51,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     auth.info.email ||= 'let@change.me'
-    puts auth.info.email    
-    
+   
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]

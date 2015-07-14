@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authorize_resource
   before_action :set_user, except: [:index]
   before_action :authenticate_user!, except: [:show]
 

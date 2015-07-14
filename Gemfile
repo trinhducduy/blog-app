@@ -28,6 +28,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'cancancan', '~> 1.10'
 gem 'haml'
