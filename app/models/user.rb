@@ -18,10 +18,13 @@ class User < ActiveRecord::Base
                                    dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :voting_posts, through: :votes, source: :post
+  has_many :voting_links, through: :votes, source: :link
+  has_many :voting_videos, through: :votes, source: :video
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followeds, through: :passive_relationships, source: :follower
   has_many :posts, dependent: :destroy
+  has_many :links, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2 }
 
@@ -33,20 +36,20 @@ class User < ActiveRecord::Base
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def vote(post)
-    votes.create(post_id: post.id)
+  def vote(type, object)
+    votes.create("#{object.class.name.downcase}_id": object.id)
   end
 
-  def unvote(post)
-    votes.find_by(post_id: post.id).destroy
+  def unvote(type, object)
+    votes.find_by("#{object.class.name.downcase}_id": object.id).destroy
   end
 
   def following?(other_user)
     following.include?(other_user)
   end
   
-  def voting?(post)
-    voting_posts.include?(post)
+  def voting?(type, object)
+    self.send("voting_#{type}").include?(object)
   end
 
   def self.from_omniauth(auth)

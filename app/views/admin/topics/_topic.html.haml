@@ -1,0 +1,5 @@
+%tr
+  %td= topic.name
+  %td= topic.description
+  %td= link_to "Edit", edit_admin_topic_path(topic), class: 'btn btn-highlight'
+  %td= link_to "Delete", admin_topic_path(topic), method: :delete, data: { confirm: "Are your sure?" }, class: 'btn btn-danger'

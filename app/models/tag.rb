@@ -1,5 +1,6 @@
 class Tag < ActiveRecord::Base
   has_and_belongs_to_many :posts
+  has_and_belongs_to_many :links  
   scope :popular, -> {
       select("tags.id, tags.name, COUNT(tags.id) AS tags_count").
       joins(:tags_posts).

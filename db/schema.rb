@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710083136) do
+ActiveRecord::Schema.define(version: 20150717080635) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -34,11 +34,37 @@ ActiveRecord::Schema.define(version: 20150710083136) do
     t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "link_id"
+    t.integer  "video_id"
   end
 
+  add_index "comments", ["link_id"], name: "index_comments_on_link_id"
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id"
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["video_id"], name: "index_comments_on_video_id"
+
+  create_table "links", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "slug"
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "links", ["topic_id"], name: "index_links_on_topic_id"
+  add_index "links", ["user_id"], name: "index_links_on_user_id"
+
+  create_table "links_tags", id: false, force: :cascade do |t|
+    t.integer "link_id"
+    t.integer "tag_id"
+  end
+
+  add_index "links_tags", ["link_id", "tag_id"], name: "index_links_tags_on_link_id_and_tag_id", unique: true
+  add_index "links_tags", ["link_id"], name: "index_links_tags_on_link_id"
+  add_index "links_tags", ["tag_id"], name: "index_links_tags_on_tag_id"
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
@@ -84,6 +110,16 @@ ActiveRecord::Schema.define(version: 20150710083136) do
 
   add_index "tags", ["slug"], name: "index_tags_on_slug", unique: true
 
+  create_table "topics", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "topics", ["slug"], name: "index_topics_on_slug", unique: true
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -115,12 +151,24 @@ ActiveRecord::Schema.define(version: 20150710083136) do
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "link_id"
+    t.integer  "video_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
   end
 
+  add_index "votes", ["answer_id"], name: "index_votes_on_answer_id"
+  add_index "votes", ["link_id"], name: "index_votes_on_link_id"
   add_index "votes", ["post_id"], name: "index_votes_on_post_id"
+  add_index "votes", ["question_id"], name: "index_votes_on_question_id"
+  add_index "votes", ["user_id", "answer_id"], name: "index_votes_on_user_id_and_answer_id", unique: true
+  add_index "votes", ["user_id", "link_id"], name: "index_votes_on_user_id_and_link_id", unique: true
   add_index "votes", ["user_id", "post_id"], name: "index_votes_on_user_id_and_post_id", unique: true
+  add_index "votes", ["user_id", "question_id"], name: "index_votes_on_user_id_and_question_id", unique: true
+  add_index "votes", ["user_id", "video_id"], name: "index_votes_on_user_id_and_video_id", unique: true
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
+  add_index "votes", ["video_id"], name: "index_votes_on_video_id"
 
 end

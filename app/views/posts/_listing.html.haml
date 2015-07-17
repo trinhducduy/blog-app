@@ -11,6 +11,8 @@
               %i 
                 By
                 = post.user.name
+                \-
+                = timeago_tag post.created_at, nojs: true, limit: 10.days.ago, format: "%B %d"
               %br
               %p 
                 - post.tags.each do |tag|

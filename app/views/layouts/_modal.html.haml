@@ -13,9 +13,10 @@
                   %i.fa.fa-5x.fa-newspaper-o
                   %p Write An Article
             .col-md-4
-              .share-link
-                %i.fa.fa-5x.fa-link
-                %p Post A Link
+              = link_to new_link_path do
+                .share-link
+                  %i.fa.fa-5x.fa-link
+                  %p Post A Link
             .col-md-4
               .share-video
                 %i.fa.fa-5x.fa-caret-square-o-right

@@ -19,10 +19,15 @@ Rails.application.routes.draw do
   resources :votes, only: [:create, :destroy]
   resources :tags, only: [:index]
   resources :users, except: [:index]
+  
+  resources :links do
+    resources :comments, except: [:destroy]
+  end
 
   namespace :admin do 
     resources :users
     resources :posts
+    resources :topics
   end
 
   root 'static_pages#home'

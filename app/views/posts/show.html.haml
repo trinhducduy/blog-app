@@ -7,8 +7,7 @@
         .block
           %h1= @post.title
           - if user_signed_in?
-            .vote-panel  
-              = render partial: 'users/form_vote', locals: {post: @post}
+            = render partial: 'votes/form', locals: {object: @post}
           %p 
             By 
             = link_to @post.user.name, user_path(@post.user)
@@ -33,7 +32,7 @@
             = render 'comments/index'
         
         .post-comment-form.block
-          = render 'comments/form'    
+          = render 'comments/form', object: @post 
     .col-md-3
       - unless @post.related.empty?
         .related-posts

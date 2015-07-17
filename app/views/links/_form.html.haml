@@ -1,0 +1,18 @@
+.form-block
+  = form_for @link do |f|
+    = render 'shared/form_errors', object: @link
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    .form-group
+      = f.label :tag_tokens
+      = f.text_field :tag_tokens, "data-pre" => @link.tags.map(&:attributes).to_json, class: 'tag-tokens form-control'
+    .form-group
+      = f.label :url, "URL"
+      = f.text_field :url, class: 'form-control'
+    .form-group
+      = f.label :topic_id, "Topic"
+      .select
+        = f.select :topic_id, options_from_collection_for_select(Topic.all, 'id', 'name', @link.new_record? ? -1 : @link.topic.id), {}, { class: 'form-control' }
+    .form-group
+      = f.submit "Save", class: 'btn btn-primary btn-lg'

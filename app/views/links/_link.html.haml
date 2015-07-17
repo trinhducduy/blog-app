@@ -1,0 +1,25 @@
+.row.link
+  .col.md-12
+    .col-md-10
+      %h2
+        =link_to link.title, link.url
+      %p
+        Submitted 
+        by
+        = link_to link.user.name, link.user
+        \-
+        = timeago_tag link.created_at, nojs: true, limit: 10.days.ago, format: "%B %d"
+      %p 
+        - link.tags.each do |tag|
+          %span.label.label-danger= tag.name    
+    .col-md-2
+      - if user_signed_in?
+        = render partial: 'votes/form', locals: {object: link}
+      %p.statistics
+        = link_to link do
+          %i.fa.fa-comment-o
+          = link.comments.count
+          %i.fa.fa-thumbs-o-up
+          = link.votes.count
+%hr/
+      

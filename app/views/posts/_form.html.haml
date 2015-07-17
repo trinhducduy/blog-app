@@ -9,7 +9,7 @@
       = f.text_field :title, class: 'form-control'
     .form-group
       = f.label :tag_tokens
-      = f.text_field :tag_tokens, "data-pre" => @post.tags.map(&:attributes).to_json, class: 'form-control'
+      = f.text_field :tag_tokens, "data-pre" => @post.tags.map(&:attributes).to_json, class: 'tag-tokens form-control'
     .form-group
       = f.label :excerpt
       = f.text_area :excerpt, class: 'form-control'

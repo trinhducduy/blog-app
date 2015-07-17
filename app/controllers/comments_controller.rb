@@ -1,15 +1,22 @@
 class CommentsController < ApplicationController
   authorize_resource
   before_action :set_comment, only: [:update, :destroy, :reply]
-  before_action :set_post, only: [:create]
   before_action :authenticate_user!
   
   def create
-    @comment = @post.comments.new(comment_params)
+    comment_type = params[:comment][:type]
+
+    if comment_type == 'posts'
+      object = Post.friendly.find(params[:post_id])    
+    elsif comment_type == 'links'
+      object = Link.friendly.find(params[:link_id])
+    end
+
+    @comment = object.comments.new(comment_params)
     @comment.user = current_user
     
     @comment.save
-    redirect_to @post
+    redirect_to :back
   end
 
   def update
@@ -32,10 +39,6 @@ class CommentsController < ApplicationController
   private
   def set_comment
     @comment = Comment.find(params[:id])
-  end
-
-  def set_post
-    @post = Post.friendly.find(params[:post_id])
   end
 
   def comment_params

@@ -38,6 +38,9 @@
 }
 
 .single-post {
+  .block {
+    padding-bottom: 30px;
+  }
   .btn-edit {
     margin-left: 10px;
   }
@@ -51,12 +54,5 @@
   }
   .related-posts {
     margin: 5px 0 10px;
-  }
-}
-
-#new_post {
-  .token-input-list-facebook {
-    border-radius: 5px;
-    border: 3px solid #eee;
   }
 }

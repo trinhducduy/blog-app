@@ -6,14 +6,28 @@ class VotesController < ApplicationController
   end
 
   def create
-    post = Post.find(params[:post_id])
-    current_user.vote(post)
-    redirect_to post
+    vote_type = params[:type]
+    
+    if vote_type == 'posts'
+      object = Post.find(params[:post_id])
+    elsif vote_type == 'links'
+      object = Link.find(params[:link_id])
+    end
+      
+    current_user.vote(:post, object)
+    redirect_to :back
   end
 
   def destroy
-    post = Vote.find(params[:id]).post
-    current_user.unvote(post)
-    redirect_to post
+    vote_type = params[:type]
+
+    if vote_type == 'posts'
+      object = Vote.find(params[:id]).post
+    elsif vote_type == 'links'
+      object = Vote.find(params[:id]).link
+    end
+
+    current_user.unvote(:post, object)
+    redirect_to :back
   end
 end

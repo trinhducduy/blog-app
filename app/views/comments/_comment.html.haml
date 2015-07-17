@@ -11,7 +11,7 @@
     %span.time
       = timeago_tag comment.created_at, nojs: true, limit: 10.days.ago   
     %span.reply-btn{ data: {id: "#{comment.id}"} }
-      - unless comment.post.nil?
+      - unless comment.is_child?
         Reply
         = "("+comment.children.count.to_s+")" if comment.children.count > 0       
         %i.fa.fa-caret-down.reply-icon

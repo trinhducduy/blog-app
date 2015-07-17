@@ -1,0 +1,41 @@
+.row
+  .col-md-12
+    .col-md-2
+      = render 'layouts/menu'
+    .col-md-7
+      .single-post
+        .block
+          %h1= @link.title
+          - if user_signed_in?
+            = render partial: 'votes/form', locals: {object: @link}
+          %p 
+            By 
+            = link_to @link.user.name, user_path(@link.user)
+            at
+            = @link.created_at.strftime("%B %d")
+            - if user_signed_in? && (@link.posted_by?(current_user) || current_user.admin?)
+              %span
+                = link_to "Edit", edit_link_path(@link), class: 'btn-edit btn btn-primary btn-sm'          
+          %p
+            = pluralize(@link.votes.count, "vote")          
+          %p 
+            - @link.tags.each do |tag|
+              %span.label.label-danger= tag.name                 
+          %code
+            = link_to @link.url, @link.url
+      
+      // Comments
+      %h1.head Comments   
+      - unless @comments.empty?
+        .block
+          = render 'comments/index'
+      
+      .post-comment-form.block
+        = render 'comments/form', object: @link  
+    
+    // Related links
+    .col-md-3
+      - unless @link.related.empty?
+        .related-posts
+          %p.head Related Links
+          = render 'links/related_links'            

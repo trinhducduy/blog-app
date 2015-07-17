@@ -61,7 +61,27 @@ em.highlight {
 }
 textarea {
   resize: none;
-  overflow: hidden
+  overflow: hidden;
+  min-height: 35px;
+}
+
+.select {
+  position: relative;
+  select {
+    padding-right: 18px;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+  }
+  &:after {
+    content: '\f0d7';
+    color: #ddd;
+    font-family: "FontAwesome";
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+  }
 }
 
 //Form
@@ -178,6 +198,10 @@ textarea {
   border: 1px solid #eee;
   padding: 20px;
   background: #fafafa;
+  .token-input-list-facebook {
+    border-radius: 5px;
+    border: 3px solid #eee;
+  }
 }
 
 /* Small Devices, Tablets */

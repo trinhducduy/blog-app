@@ -1,0 +1,11 @@
+%h1 
+  All topics
+  %span
+    = link_to "Create New Topic", new_admin_topic_path, class: 'btn btn-primary'
+%table.table
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+  = render @topics

@@ -16,6 +16,7 @@
  *= require posts
  *= require users
  *= require comments
+ *= require links
  *= require jquery-tokeninput/styles/token-input-facebook
  *= require static_pages
  *= require_self
