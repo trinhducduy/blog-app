@@ -9,6 +9,7 @@ class Ability
       # all users
       can :manage, :static_page
       can [:read, :create], :all
+      can :finish_signup, User
       can :search, Post
       can :reply, Comment
       

@@ -1,6 +1,6 @@
 .auth-panel
   %h3 Please update your email !
-  = form_for @user do |f|
+  = form_for @user, url: finish_signup_path do |f|
     -if @user.errors.any?
       %ul.alert.alert-warning
         - @user.errors.full_messages.each do |msg|

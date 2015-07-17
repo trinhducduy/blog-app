@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       if request.patch? && params[:user] 
         if @user.update(user_params)
           sign_in(@user, bypass: true)
-          redirect_to root_path, notice: 'Successfully authenticated from Twitter.'
+          redirect_to root_path, notice: 'Update email successfully'
         else
           render :finish_signup
         end
